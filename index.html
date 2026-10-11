@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Princess — Our First Month</title>
+<style>
+:root{--wine:#3a0715;--red:#741c31;--gold:#e8c77c;--cream:#fff3df;--ink:#1a070d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#16050a;color:var(--cream);font-family:Georgia,'Times New Roman',serif;min-height:100vh;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:min(8vw,100px);z-index:5;pointer-events:none;background:repeating-linear-gradient(90deg,#390511 0,#650f25 16px,#8b1e35 30px,#4b0719 44px);box-shadow:inset -12px 0 18px #16050a66}
+body:before{left:0;border-right:3px solid #c99b4e}body:after{right:0;border-left:3px solid #c99b4e}
+.stage{min-height:100vh;padding:42px 9vw 60px;display:flex;align-items:center;justify-content:center;position:relative}
+.stage:before{content:"";position:absolute;inset:16px 8vw;border:1px solid #b38a4a55;pointer-events:none}
+.slide{display:none;width:min(900px,100%);animation:rise .65s ease both;position:relative;z-index:1}.slide.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.kicker{text-transform:uppercase;letter-spacing:.28em;color:var(--gold);font:12px Arial,sans-serif;text-align:center}
+h1,h2,p{text-align:center}h1{font-size:clamp(42px,7vw,78px);line-height:1.02;margin:18px 0;color:var(--gold);font-weight:normal;text-shadow:0 3px 0 #5c1326,0 0 24px #e8c77c22}
+h2{font-size:clamp(30px,5vw,50px);font-weight:normal;color:var(--gold);margin:14px 0 24px}
+p{font-size:clamp(17px,2.2vw,21px);line-height:1.75;max-width:680px;margin:16px auto}
+.script{font-style:italic;color:#f9dfad}.ornament{text-align:center;color:var(--gold);letter-spacing:.5em;margin:20px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+button,.btn{border:1px solid var(--gold);background:linear-gradient(135deg,#8a2038,#4b0a1b);color:#fff1d1;padding:13px 23px;font:14px Arial,sans-serif;letter-spacing:.08em;cursor:pointer;transition:.2s;text-decoration:none}
+button:hover,.btn:hover{background:var(--gold);color:#2b0812;transform:translateY(-2px)}
+button.secondary{background:transparent;color:var(--gold)}
+.photo-strip{display:flex;gap:14px;justify-content:center;align-items:center;margin:28px auto;max-width:720px}
+.photo-strip img{width:31%;height:210px;object-fit:cover;border:5px solid #f3dfb6;outline:1px solid #b48a45;box-shadow:0 10px 25px #0008;filter:sepia(.13) saturate(.8)}
+.photo-strip img:nth-child(2){transform:translateY(-12px) rotate(2deg)}.photo-strip img:first-child{transform:rotate(-3deg)}.photo-strip img:last-child{transform:rotate(3deg)}
+.frame{max-width:640px;margin:24px auto;border:1px solid #b48a45;padding:12px;background:#310913;box-shadow:0 0 0 5px #310913,0 0 0 6px #b48a4566}
+.frame img{display:block;width:100%;max-height:360px;object-fit:cover;filter:sepia(.18) saturate(.82)}
+.form-card{max-width:650px;margin:0 auto;background:#fff0d9;color:#35101a;padding:25px;border:2px solid var(--gold);box-shadow:0 12px 35px #0008}.google-form-wrap{width:100%;overflow:hidden;background:#fff;border:1px solid #e5d8c3}.google-form-wrap iframe{display:block;width:100%;min-height:950px;border:0}@media(max-width:600px){.form-card{padding:14px}.google-form-wrap iframe{min-height:1100px}}
+label{display:block;font:13px Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;margin:16px 0 8px}
+textarea,input{width:100%;padding:12px;border:1px solid #c4a26a;background:#fffaf1;color:#35101a;font:16px Georgia,serif;resize:vertical}
+textarea{min-height:100px}.small{font:12px Arial,sans-serif;color:#d9bb83;text-align:center}
+#musicDock{position:fixed;right:20px;bottom:16px;z-index:8;display:flex;gap:8px;align-items:center}
+#musicDock button{padding:10px 13px;font-size:11px;background:#3b0817eF}
+#ytPlayer{position:fixed;width:1px;height:1px;left:-100px;top:-100px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:10;transition:width .3s}
+@media(max-width:600px){body:before,body:after{width:18px}.stage{padding:32px 7vw}.stage:before{inset:10px 5vw}.photo-strip{gap:7px}.photo-strip img{height:130px;border-width:3px}.frame{padding:7px}#musicDock{right:8px;bottom:8px}.actions button{padding:12px 15px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="stage">
+<section class="slide active" data-n="0">
+<div class="kicker">One month together · 4.5 months of us</div>
+<div class="ornament">✦ ── ✦ ── ✦</div>
+<h1>For My Princess</h1>
+<p class="script">Sayangku, cintaku, my love, bojoku…</p>
+<div class="photo-strip"><img src="assets/video-call.jpeg" alt="Our theater selfie"><img src="assets/lake-together.jpeg" alt="Us by the lake"><img src="assets/cafe-selfie.jpeg" alt="A little moment together"></div>
+<p>Malam ini, panggung kecil ini khusus untuk kamu.</p>
+<div class="actions"><button onclick="nextSlide()">Buka cerita kita →</button></div>
+<p class="small">PLEASE TAKE YOUR SEAT, MY LOVE</p>
+</section>
+
+<section class="slide" data-n="1">
+<div class="kicker">Act I · A little gratitude</div><h2>Thank you, my love.</h2>
+<div class="frame"><img src="assets/hotel-batang.jpeg" alt="A memory of us"></div>
+<p>For your time, your love, and for choosing me till now.</p>
+<p>Terima kasih sudah memberi ruang untuk aku hadir di hidupmu. Terima kasih untuk obrolan, tawa, perhatian, dan hal-hal sederhana yang perlahan jadi berarti.</p>
+<p class="script">Empat setengah bulan mengenalmu, dan satu bulan menyebut kita “kita”.</p>
+<div class="ornament">❦</div><div class="actions"><button class="secondary" onclick="prevSlide()">← Sebelumnya</button><button onclick="nextSlide()">Lanjutkan →</button></div>
+</section>
+
+<section class="slide" data-n="2">
+<div class="kicker">Act II · A sincere apology</div><h2>I’m still learning.</h2>
+<div class="photo-strip"><img src="assets/theater-tongue.jpeg" alt="Video call memory"><img src="assets/theater-lean.jpeg" alt="A silly moment"><img src="assets/theater-selfie.jpeg" alt="Together at the theater"></div>
+<p>Maaf kalau aku masih banyak kurangnya. Maaf kalau ada hal yang belum sesuai ekspektasimu, atau saat aku belum bisa memahami kamu dengan baik.</p>
+<p>Aku tahu sayang saja tidak selalu cukup; aku juga perlu belajar mendengarkan, memahami, dan menunjukkan rasa sayang dengan cara yang kamu butuhkan.</p>
+<p class="script">Aku tidak menjanjikan akan selalu sempurna. Aku ingin terus belajar jadi pasangan yang lebih baik untukmu.</p>
+<div class="actions"><button class="secondary" onclick="prevSlide()">← Sebelumnya</button><button onclick="nextSlide()">Ada satu hal penting →</button></div>
+</section>
+
+<section class="slide" data-n="3">
+<div class="kicker">Act III · Our relationship, our team</div><h2>Can we grow together?</h2>
+<p>Aku ingin hubungan ini jadi tempat yang aman untuk kita sama-sama jujur. Sekarang, aku ingin mendengar dari kamu—bukan untuk mencari siapa yang salah, tapi supaya kita bisa bertumbuh bersama.</p>
+<div class="form-card">
+<p style="font-size:16px;margin-top:0">Isi evaluasi kecil ini dengan jujur, ya, sayang. Jawabanmu akan tersimpan melalui Google Forms agar bisa aku baca dan kita bicarakan bersama.</p>
+<div class="google-form-wrap">
+<iframe
+  src="https://docs.google.com/forms/d/e/1FAIpQLSfshfLIlRDJqT7LTYriCsU1LllNfsICllY7xn6ieKhPyq_rYw/viewform?embedded=true"
+  title="Evaluasi hubungan kita"
+  width="100%"
+  height="950"
+  frameborder="0"
+  marginheight="0"
+  marginwidth="0"
+  loading="lazy">Loading…</iframe>
+</div>
+<p style="font:12px Arial,sans-serif;text-align:center;line-height:1.5">Pastikan tekan tombol <strong>Kirim</strong> di akhir formulir supaya jawabanmu tersimpan.</p>
+</div>
+<div class="actions"><button class="secondary" onclick="prevSlide()">← Sebelumnya</button><button onclick="nextSlide()">Ke bab terakhir →</button></div>
+</section>
+
+<section class="slide" data-n="4">
+<div class="kicker">Final Act · To be continued</div><h2>Our story is just beginning.</h2>
+<div class="frame"><img src="assets/lake-laugh.jpeg" alt="A happy moment together"></div>
+<p>Selamat satu bulan hubungan kita, sayangku. Dan selamat untuk semua cerita yang sudah kita bangun selama empat setengah bulan ini.</p>
+<p>Aku berharap kita terus memilih satu sama lain—bukan hanya saat semuanya mudah, tetapi juga saat kita perlu belajar, bicara baik-baik, dan memperbaiki sesuatu bersama.</p>
+<p>Semoga ke depannya ada lebih banyak tawa, cerita random, pelukan, perjalanan, dan kenangan yang bisa kita lihat kembali sambil berkata, <span class="script">“Untung kita terus mencoba.”</span></p>
+<h1 style="font-size:clamp(38px,6vw,64px)">I choose you.</h1>
+<p class="script">Today, tomorrow, and one day at a time.</p>
+<div class="ornament">✦ ♥ ✦</div>
+<div class="actions"><button class="secondary" onclick="prevSlide()">← Putar kembali</button><button onclick="restart()">Tonton dari awal ↻</button></div>
+</section>
+</div>
+<div id="musicDock"><button id="musicBtn" onclick="toggleMusic()">♫ Play music</button></div>
+<div id="ytPlayer"></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;let player=null;let playerReady=false;let musicOn=false;let playRequested=false;
+function showSlide(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
+function startMusic() {playRequested=true;if (!playerReady || !player){document.getElementById('musicBtn').textContent='♫ Loading music...';return} player.unMute();player.setVolume(55);player.playVideo();musicOn=true;document.getElementById('musicBtn').textContent= 'Ⅱ Pause music';}
+function nextSlide(){if (current === 0 && !playRequested){startMusic();}showSlide(current + 1);} function prevSlide() {showSlide(current - 1)} function restart(){showSlide(0);}
+function toggleMusic(){if(!playerReady || !player){startMusic();return;} if (musicOn){player.pauseVideo();musicOn=false;document.getElementById('musicBtn').textContent='♫ Play music';}else{startMusic()}}
+window.onYouTubeIframeAPIReady=function(){player=new YT.Player('ytPlayer',{height:'1',width:'1',videoId:' -J7J_IWUhls ',playerVars:{autoplay:0,controls:0,playsinline:1},event:{onready:function(){playerReady=true;if(playRequested){startMusic();}}}})};
+const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
+showSlide(0);
+</script>
+</body></html>
