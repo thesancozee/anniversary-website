@@ -26,7 +26,7 @@ button.secondary{background:transparent;color:var(--gold)}
 .photo-strip img:nth-child(2){transform:translateY(-12px) rotate(2deg)}.photo-strip img:first-child{transform:rotate(-3deg)}.photo-strip img:last-child{transform:rotate(3deg)}
 .frame{max-width:640px;margin:24px auto;border:1px solid #b48a45;padding:12px;background:#310913;box-shadow:0 0 0 5px #310913,0 0 0 6px #b48a4566}
 .frame img{display:block;width:100%;max-height:360px;object-fit:cover;filter:sepia(.18) saturate(.82)}
-.form-card{max-width:650px;margin:0 auto;background:#fff0d9;color:#35101a;padding:25px;border:2px solid var(--gold);box-shadow:0 12px 35px #0008}
+.form-card{max-width:650px;margin:0 auto;background:#fff0d9;color:#35101a;padding:25px;border:2px solid var(--gold);box-shadow:0 12px 35px #0008}.google-form-wrap{width:100%;overflow:hidden;background:#fff;border:1px solid #e5d8c3}.google-form-wrap iframe{display:block;width:100%;min-height:950px;border:0}@media(max-width:600px){.form-card{padding:14px}.google-form-wrap iframe{min-height:1100px}}
 label{display:block;font:13px Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;margin:16px 0 8px}
 textarea,input{width:100%;padding:12px;border:1px solid #c4a26a;background:#fffaf1;color:#35101a;font:16px Georgia,serif;resize:vertical}
 textarea{min-height:100px}.small{font:12px Arial,sans-serif;color:#d9bb83;text-align:center}
@@ -73,16 +73,19 @@ textarea{min-height:100px}.small{font:12px Arial,sans-serif;color:#d9bb83;text-a
 <div class="kicker">Act III · Our relationship, our team</div><h2>Can we grow together?</h2>
 <p>Aku ingin hubungan ini jadi tempat yang aman untuk kita sama-sama jujur. Sekarang, aku ingin mendengar dari kamu—bukan untuk mencari siapa yang salah, tapi supaya kita bisa bertumbuh bersama.</p>
 <div class="form-card">
-<label for="good">Hal yang sudah kamu suka dari hubungan kita</label>
-<textarea id="good" placeholder="Hal kecil yang bikin kamu bahagia..."></textarea>
-<label for="improve">Apa yang menurutmu perlu kita perbaiki?</label>
-<textarea id="improve" placeholder="Misalnya komunikasi, waktu bersama, cara memahami satu sama lain..."></textarea>
-<label for="need">Apa yang kamu butuhkan lebih banyak dariku?</label>
-<textarea id="need" placeholder="Aku ingin kamu tahu bahwa..."></textarea>
-<label for="promise">Satu harapanmu untuk kita</label>
-<textarea id="promise" placeholder="Ke depannya, aku berharap kita..."></textarea>
-<p style="font:12px Arial,sans-serif;text-align:left;line-height:1.5">Jawabanmu akan diunduh sebagai file teks di perangkat ini. Kamu bisa mengirimkannya ke aku setelah itu.</p>
-<div class="actions"><button onclick="saveAnswers()">Simpan jawaban ♥</button></div>
+<p style="font-size:16px;margin-top:0">Isi evaluasi kecil ini dengan jujur, ya, sayang. Jawabanmu akan tersimpan melalui Google Forms agar bisa aku baca dan kita bicarakan bersama.</p>
+<div class="google-form-wrap">
+<iframe
+  src="https://docs.google.com/forms/d/e/1FAIpQLSfshfLIlRDJqT7LTYriCsU1LllNfsICllY7xn6ieKhPyq_rYw/viewform?embedded=true"
+  title="Evaluasi hubungan kita"
+  width="100%"
+  height="950"
+  frameborder="0"
+  marginheight="0"
+  marginwidth="0"
+  loading="lazy">Loading…</iframe>
+</div>
+<p style="font:12px Arial,sans-serif;text-align:center;line-height:1.5">Pastikan tekan tombol <strong>Kirim</strong> di akhir formulir supaya jawabanmu tersimpan.</p>
 </div>
 <div class="actions"><button class="secondary" onclick="prevSlide()">← Sebelumnya</button><button onclick="nextSlide()">Ke bab terakhir →</button></div>
 </section>
@@ -106,8 +109,7 @@ const slides=[...document.querySelectorAll('.slide')];let current=0;let player=n
 function showSlide(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'});}
 function startMusic() {playRequested=true;if (!playerReady || !player){document.getElementById('musicBtn').textContent='♫ Loading music...';return} player.unMute();player.setVolume(55);player.playVideo();musicOn=true;document.getElementById('musicBtn').textContent= 'Ⅱ Pause music';}
 function nextSlide(){if (current === 0 && !playRequested){startMusic();}showSlide(current + 1);} function prevSlide() {showSlide(current - 1)} function restart(){showSlide(0);}
-function saveAnswers(){const fields=[['Hal yang disukai', 'good'],['Yang perlu diperbaiki','improve'],['Yang dibutuhkan dariku','need'],['Harapan untuk kita','promise']];let out='UNTUK KITA — JAWABAN DARI MY PRINCESS\n\n';fields.forEach(([label,id])=>out+=label+':\n'+(document.getElementById(id).value.trim()||'(belum diisi)')+'\n\n');out+='Terima kasih sudah jujur. Kita bicarakan pelan-pelan, ya. ♥';const blob=new Blob([out],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jawaban-untuk-kita.txt';a.click();URL.revokeObjectURL(a.href)}
-function toggleMusic(){if(!playerReady || !player){startMusic();return;} if (musicOn){player.pauseVideo();musicOn=false;document.getElementById('musicBtm').textContent='♫ Play music';}else{startMusic()}}
+function toggleMusic(){if(!playerReady || !player){startMusic();return;} if (musicOn){player.pauseVideo();musicOn=false;document.getElementById('musicBtn').textContent='♫ Play music';}else{startMusic()}}
 window.onYouTubeIframeAPIReady=function(){player=new YT.Player('ytPlayer',{height:'1',width:'1',videoId:' -J7J_IWUhls ',playerVars:{autoplay:0,controls:0,playsinline:1},event:{onready:function(){playerReady=true;if(playRequested){startMusic();}}}})};
 const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.appendChild(tag);
 showSlide(0);
